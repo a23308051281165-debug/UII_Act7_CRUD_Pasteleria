@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmar Borrado</title>
+    <style>
+        /* Estilos base */
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #DC3545; } 
+        
+        /* Estilos de botones necesarios */
+        .btn { margin: 5px; padding: 10px 15px; text-decoration: none; color: white; display: inline-block; }
+        .confirmar-borrar { background-color: #DC3545; }
+        .cancelar { background-color: #6c757d; }
+        
+        /* Contenedor de advertencia */
+        .advertencia { border: 1px solid #DC3545; padding: 15px; margin-bottom: 20px; background-color: #f8d7da; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <h1>¡ADVERTENCIA! Eliminación de Producto</h1>
+    <div class="advertencia">
+        <p>Estás a punto de borrar el siguiente producto. Esta acción es **irreversible**.</p>
+        <p><strong>Producto:</strong> {{ producto.nombre }}</p>
+        <p><strong>Precio:</strong> ${{ producto.precio }}</p>
+        <p><strong>Categoría:</strong> {{ producto.categoria }}</p>
+    </div>
+    
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn confirmar-borrar">Sí, Borrar Producto</button>
+        <a href="{% url 'productos_inicio' %}" class="btn cancelar">Cancelar</a>
+    </form>
+</body>
+</html>

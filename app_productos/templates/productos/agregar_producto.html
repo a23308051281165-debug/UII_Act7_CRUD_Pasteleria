@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Producto</title>
+    <style>
+        /* Estilos base */
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        
+        /* Estilos de botones necesarios */
+        .btn { margin: 5px; padding: 10px 15px; text-decoration: none; color: white; display: inline-block; }
+        .guardar { background-color: #28A745; }
+        .volver { background-color: #6c757d; }
+
+        /* Estilos de formulario sencillos */
+        label { display: block; margin-top: 10px; font-weight: bold; }
+        input[type="text"], input[type="number"] {
+            width: 300px; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Agregar Nuevo Producto</h1>
+    <form method="post">
+        {% csrf_token %}
+        
+        <label>Nombre del Producto:</label>
+        <input type="text" name="nombre" required>
+
+        <label>Tipo (Ej: Pastel, Pan, Galleta):</label>
+        <input type="text" name="tipo" required>
+
+        <label>Precio:</label>
+        <input type="number" name="precio" step="0.01" required>
+
+        <label>Stock:</label>
+        <input type="number" name="stock" required>
+
+        <label>Categoría (Ej: Postres, Salados):</label>
+        <input type="text" name="categoria" required>
+        
+        <label>Unidad de Medida (Ej: kg):</label>
+        <input type="text" name="unidad_medida" value="kg" required>
+        
+        <div style="margin-top: 20px;">
+            <button type="submit" class="btn guardar">Guardar Producto</button>
+            <a href="{% url 'productos_inicio' %}" class="btn volver">Volver al Inventario</a>
+        </div>
+    </form>
+</body>
+</html>
